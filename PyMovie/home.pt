@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>PyMovies</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="${request.static_url('PyMovie:static/bootstrap.min.css') }"/>
+    <script type="text/javascript" src="${request.static_url('PyMovie:static/jquery-3.4.1.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('PyMovie:static/PyMovie.js')}"></script>
+</head>
+<body>
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger static-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <h2>PyMovies</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add">Add Video</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/rank">Rank</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- /Nav -->
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <h1 class="my-4">Videos
+        </h1>
+        <!-- /Page Heading -->
+
+        <div class="row" tal:condition="empty">
+            <p>
+                Don't exist any video in database.
+                <a href="/add" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add video</a>
+            </p>
+        </div>
+
+        <div class="row" tal:condition="not empty">
+            <div class="col-lg-6 mb-4" tal:repeat="video videos">
+                <div class="card h-100">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe type="text/html" class="embed-responsive-item" src="http://www.youtube.com/embed/${video.vidId}"></iframe>
+                    </div>
+                    <div class="card-body" style="padding-bottom: 0">
+                        <h4 class="card-title">
+                            ${video.title}
+                        </h4>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            ${video.subTitle}
+                        </h6>
+                        <p class="card-text">
+                            ${video.description}
+                        </p>
+                        <div class="row justify-content-md-end bg-dark" style="margin-bottom: 5px;">
+                            <h6 class="card-subtitle mb-2 text-light" style="margin-right: 10px;margin-left: 9px;height: 40px;line-height: 50px;">
+                                ${video.theme}
+                            </h6>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <span style="padding-right: 5px; color: green">${video.likes}</span>
+                            <button class="btn btn-outline-dark btn-lg" onclick="thumb(&quot;${str(video._id)}&quot;, true)">
+                                <img src="${request.static_url('PyMovie:static/like.png')}" width="31px"/>
+                            </button>
+                        </div>
+                        <div class="col-6 text-center">
+                            <span style="padding-right: 5px; color: red">${video.dislikes}</span>
+                            <button class="btn btn-outline-dark btn-lg" onclick="thumb(&quot;${str(video._id)}&quot;, false)">
+                                <img src="${request.static_url('PyMovie:static/dislike.png')}" width="31px"/>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Content -->
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>PyMovies</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="${request.static_url('PyMovie:static/bootstrap.min.css') }"/>
+    <script type="text/javascript" src="${request.static_url('PyMovie:static/jquery-3.4.1.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('PyMovie:static/delete.js')}"></script>
+</head>
+<body>
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger static-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <h2>PyMovies</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add">
+                        Add Video
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/rank">Rank</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- /Nav -->
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <h1 class="my-4">Rank of Themes</h1>
+        <!-- /Page Heading -->
+
+        <div class="row">
+            <table class="table table-striped table-ligth">
+                <thead>
+                    <tr>
+                        <th scope="col">Pos.</th>
+                        <th scope="col">Theme</th>
+                        <th scope="col">Likes</th>
+                        <th scope="col">Dislikes</th>
+                        <th scope="col">Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tal:repeat="theme rank">
+                        <td tal:content="repeat.theme.number">1</td>
+                        <td>${theme.theme}</td>
+                        <td>${theme.likes}</td>
+                        <td>${theme.dislikes}</td>
+                        <td>${theme.score}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    <!-- /Page Content -->
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>PyMovies</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="${request.static_url('PyMovie:static/bootstrap.min.css') }"/>
+    <script type="text/javascript" src="${request.static_url('PyMovie:static/jquery-3.4.1.min.js')}"></script>
+</head>
+<body>
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger static-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <h2>PyMovies</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/add">
+                        Add Video
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/rank">Rank</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- /Nav -->
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <h1 class="my-4">Add Video
+        </h1>
+        <!-- /Page Heading -->
+
+        <div class="row justify-content-md-center">
+            <div class="col-6">
+            <form action="${request.current_route_url()}" method="POST">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Insert here the Title" required>
+                    </div>
+                    <div class="form-group col">
+                        <label for="subTitle">Subtitle</label>
+                        <input type="text" class="form-control" name="subTitle" id="subTitle" placeholder="Insert here the Subtitle">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="url">URL</label>
+                    <input type="text" class="form-control" name="url" id="url" placeholder="Insert here the URL" required>
+                </div>
+                <div class="form-group">
+                    <label for="theme">Theme</label>
+                    <select class="form-control" name="theme" id="theme" required>
+                        <option>Music</option>
+                        <option>Games</option>
+                        <option>Art</option>
+                        <option>Critic</option>
+                        <option>News</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-dark float-right">Submit</button>
+            </form>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center" tal:condition="on_insert">
+            <div class="alert alert-dark" role="alert" tal:condition="not error">
+                Video was inserted on database.
+            </div>
+            <div class="alert alert-dark" role="alert" tal:condition="error">
+                There was an error when we tried insert the video on database.
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Content -->
+</body>
+</html>
