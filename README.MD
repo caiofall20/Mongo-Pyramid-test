@@ -4,6 +4,8 @@ PyMovie README
 Getting Started
 ---------------
 
+Make sure to have installed 'pyramid and mongodb'.
+
 Start a MongoDB server running on localhost, port 27017.
 
 With the command prompt open in the folder where the development.ini file is located.
