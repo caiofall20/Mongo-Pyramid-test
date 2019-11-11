@@ -36,18 +36,17 @@ def main(global_config, **settings):
             host='mongodb+srv://admin:fac280895@cluster0-cieon.mongodb.net/test?retryWrites=true&w=majority'
         )
 
-        def add_db(request):
-            db = config.registry.db[db_url.path[1:]]
-            return db
+def add_db(request):
+    db = config.registry.db[db_url.path[1:]]
+    return db
         
-        def add_fs(request):
-            return GridFS(request.db)
+def add_fs(request):
+    return GridFS(request.db)
 
-        config.add_request_method(add_db, 'db', reify=True)
-        config.add_request_method(add_fs, 'fs', reify=True)
+    config.add_request_method(add_db, 'db', reify=True)
+    config.add_request_method(add_fs, 'fs', reify=True)
 
-        config.scan()
-    return config.make_wsgi_app()    
+           
 
     config.include('pyramid_chameleon')
     config.add_route('home', '/')
