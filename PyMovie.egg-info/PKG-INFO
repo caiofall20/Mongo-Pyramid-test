@@ -1,34 +1,10 @@
-Metadata-Version: 2.1
+Metadata-Version: 1.0
 Name: PyMovie
-Version: 0.0
-Summary: PyMovie
+Version: 0.0.0
+Summary: UNKNOWN
 Home-page: UNKNOWN
-Author: 
-Author-email: 
+Author: UNKNOWN
+Author-email: UNKNOWN
 License: UNKNOWN
-Description: PyMovie README
-        ==================
-        
-        Getting Started
-        ---------------
-        
-        - cd <directory containing this file>
-        
-        - $VENV/bin/pip install -e .
-        
-        - $VENV/bin/pserve development.ini
-        
-        
-        
-        0.0
-        ---
-        
-        -  Initial version
-        
-Keywords: web pyramid pylons
+Description: UNKNOWN
 Platform: UNKNOWN
-Classifier: Programming Language :: Python
-Classifier: Framework :: Pyramid
-Classifier: Topic :: Internet :: WWW/HTTP
-Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Application
-Provides-Extra: testing
