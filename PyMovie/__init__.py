@@ -27,7 +27,7 @@ from pymongo import MongoClient
 def main(global_config, **settings):
     # """ This function returns a Pyramid WSGI application.
     # """
-    # with Configurator(settings=settings) as config:
+     with Configurator(settings=settings) as config:
     #     config.include('pyramid_jinja2')
     #     config.include('.routes')
 
