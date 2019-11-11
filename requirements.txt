@@ -1,2 +1,0 @@
-
--e git+https://github.com/caiofall20/Mongo-Pyramid-test.git@257c288d3dfec034c9203abff0593b2f04396837#egg=PyMovie
